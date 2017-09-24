@@ -1,18 +1,26 @@
 # Work Timer
 
+Deployment on GitHub Pages: [https://djdiox.github.io/work-timer/](https://djdiox.github.io/work-timer/)
+
+
 This project was created with React-Redux and Material Design.
 
 Also Firebase is used as storage and backend for the tasks / work times.
 Later detailed overview and analytics will be provided.
 
-GitHub: https://github.com/djdiox/work-timer
+GitHub Repository: [https://github.com/djdiox/work-timer](https://github.com/djdiox/work-timer)
+
 
 Created by Markus Wagner (2017)
 
 ## Development
-Hit `yarn` and then `npm start` and `npm sass:watch`.
+Install node.js . Run `npm i -g yarn`.
+Go to Project Directory and hit `yarn` and then `npm start` and `npm sass:watch`.
 Keep in mind that the CSS Files will be overwritten by the SCSS files.
 
+## Deployment
+
+Run `yarn deploy`. Now The Build will be deployed on github pages. Maybe you'll need GCM for Windows.
 ## Offline Capability
 
 Will be provided soon with service workers via HTTPS.
