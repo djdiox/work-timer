@@ -1,6 +1,6 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import React from 'react';
+import { connect } from 'react-redux';
+import { addTodo } from '../actions';
 
 let AddTodo = ({ dispatch }) => {
   let input
@@ -24,7 +24,7 @@ let AddTodo = ({ dispatch }) => {
       </form>
     </div>
   )
-}
-AddTodo = connect()(AddTodo)
+};
+AddTodo = connect()(AddTodo);
 
-export default AddTodo
+export default AddTodo;
