@@ -1,11 +1,12 @@
 # Work Timer
 
+Deployment on GitHub Pages: https://djdiox.github.io/work-timer/
 This project was created with React-Redux and Material Design.
 
 Also Firebase is used as storage and backend for the tasks / work times.
 Later detailed overview and analytics will be provided.
 
-GitHub: https://github.com/djdiox/work-timer
+GitHub Repository: https://github.com/djdiox/work-timer
 
 Created by Markus Wagner (2017)
 
