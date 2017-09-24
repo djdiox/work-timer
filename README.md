@@ -1,3 +1,16 @@
+#Work Timer
+
+This project was created with React-Redux and Material Design.
+Backend is simply Firebase. 
+
+GitHub: https://github.com/djdiox/work-timer
+
+Created by Markus Wagner (2017)
+
+##Development
+Hit `yarn` and then `npm start` and `npm sass:watch` 
+
+## Create-React-Informations
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
