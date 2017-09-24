@@ -1,18 +1,14 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer'
-import AddTodo from '../containers/AddTodo'
-import VisibleTodoList from '../containers/VisibleTodoList'
-import './App.css'; // need to import any css on JSX, gets build by SCSS file
+import { Provider } from 'react-redux';
+import Home from './Home';
+import configureStore from '../store';
+import './App.css';
 
+const initialState = window.__INITIAL_STATE__ || { firebase: { authError: null } }
+const store = configureStore(initialState)
 
-const App = () => (
-  <div className="main-container">
-    <Header />
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
-  </div>
+export default () => (
+  <Provider store={store}>
+    <Home />
+  </Provider>
 )
-
-export default App
