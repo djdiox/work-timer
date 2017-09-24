@@ -30,6 +30,10 @@ class App extends Component {
   handleAdd = () => {
     const {firebase} = this.props;
     const {newTodo} = this.refs;
+
+    if(newTodo.value === ''){
+      return;
+    }
     firebase.push('/todos', {
       text: newTodo.value,
       date: this.state.m.toISOString(),
