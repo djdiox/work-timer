@@ -1,24 +1,25 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { firebase } from 'react-redux-firebase'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { firebase } from 'react-redux-firebase';
+import Button from 'material-ui/Button';
 
-import './Todo.css'
+import './Todo.css';
 
 class TodoItem extends Component {
   static propTypes = {
     todo: PropTypes.object,
     id: PropTypes.string
-  }
+  };
 
   render(){
-    const {firebase, todo, id} = this.props
+    const {firebase, todo, id} = this.props;
     const toggleDone = () => {
-      firebase.set(`/todos/${id}/done`, !todo.done)
-    }
+      firebase.set(`/todos/${id}/done`, !todo.done);
+    };
 
     const deleteTodo = (event) => {
        firebase.remove(`/todos/${id}`)
-    }
+    };
     return (
       <li className="Todo">
         <input
@@ -28,11 +29,11 @@ class TodoItem extends Component {
           onChange={toggleDone}
         />
         {todo.text || todo.name}
-        <button className="Todo-Button" onClick={deleteTodo}>
+        <Button className="Todo-Button" onClick={deleteTodo}>
           Delete
-        </button>
+        </Button>
       </li>
-    )
-  }
-}
-export default firebase()(TodoItem)
+    );
+  };
+};
+export default firebase()(TodoItem);

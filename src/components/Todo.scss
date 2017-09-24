@@ -1,20 +1,24 @@
 .todo {
-  margin: 1rem; }
+  margin: 1rem;
 
+}
 .todo-input {
-  margin: 1rem; }
+  margin: 1rem;
+}
 
-.new-todo {
+.new-todo{
   padding: 10px 16px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .todo-button {
   position: relative;
-  bottom: 2px; }
+  bottom: 2px;
+}
 
 input[type=text], select {
   padding: 10px 14px;
@@ -22,4 +26,5 @@ input[type=text], select {
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
