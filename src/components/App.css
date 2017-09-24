@@ -25,3 +25,26 @@
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+
+.ion-ios-arrow-right {
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 5px 5px 5px 5px;
+  margin-right: 4px;
+  margin-bottom: 2px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg); }
+
+.ion-ios-arrow-left {
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 5px 5px 5px 5px;
+  margin-left: 4px;
+  margin-bottom: 2px;
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg); }
+
+.hidden {
+  display: none; }

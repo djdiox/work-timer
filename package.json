@@ -5,6 +5,7 @@
   "dependencies": {
     "input-moment": "^0.3.6",
     "material-ui": "^1.0.0-beta.11",
+    "moment": "^2.18.1",
     "node-sass-chokidar": "0.0.3",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",

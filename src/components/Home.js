@@ -2,11 +2,15 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {firebaseConnect, isLoaded, isEmpty, dataToJS} from 'react-redux-firebase';
+import moment from 'moment';
+import InputMoment from 'input-moment';
+
 import Button from 'material-ui/Button';
 
 import logo from '../assets/logo.svg';
 import TodoItem from './TodoItem';
 import './App.css';
+import '../assets/vendor/input-moment.css'
 
 class App extends Component {
   static propTypes = {
@@ -14,20 +18,37 @@ class App extends Component {
     firebase: PropTypes.shape({push: PropTypes.func.isRequired})
   };
 
+  state = {
+    m: moment().add('1', 'month'),
+    isStartPickerVisible:true
+  };
+
+  handleChange = m => {
+    this.setState({m});
+  };
+
   handleAdd = () => {
     const {firebase} = this.props;
     const {newTodo} = this.refs;
     firebase.push('/todos', {
       text: newTodo.value,
+      date: this.state.m.toISOString(),
       done: false
     })
     newTodo.value = ''
   }
 
-  render() {
-    const {todos} = this.props;
+  toggleCalendar = () => {
+    const state = this.state;
+    this.setState({...state, isStartPickerVisible:!state.isStartPickerVisible});
+    console.log(this.state);
+  };
 
-    console.log('todos;', todos);
+  render() {
+    const {todos, date} = this.props;
+    // date = moment();
+
+    console.log('todos:', todos);
 
     const todosList = (!isLoaded(todos))
       ? 'Loading'
@@ -50,6 +71,14 @@ class App extends Component {
           <Button raised onClick={this.handleAdd} className='todo-button'>
             Add
           </Button>
+          <h3>Start:</h3>
+          <div className="input">
+            <input type="text" value={this.state.m.format('llll')} 
+            onClick={this.toggleCalendar} readOnly/>
+          </div>
+          <div className={this.state.isStartPickerVisible === true ? '' : 'hidden'} >
+          <InputMoment moment={this.state.m} onChange={this.handleChange} minStep={5}/>
+          </div>
         </div>
       </div>
     )
@@ -58,8 +87,8 @@ class App extends Component {
 const fbWrappedComponent = firebaseConnect([
   '/todos'
   // { type: 'once', path: '/todos' } // for loading once instead of binding
-  // '/todos#populate=owner:displayNames' // for populating owner parameter from id
-  // into string loaded from /displayNames root
+  // '/todos#populate=owner:displayNames' // for populating owner parameter from
+  // id into string loaded from /displayNames root
   // '/todos#populate=collaborators:users' // for populating owner parameter from
   // id to user object loaded from /users root { path: 'todos', populates: [{
   // child: 'collaborators', root: 'users' }] } // object notation of population
