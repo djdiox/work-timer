@@ -1,7 +1,7 @@
-.Todo {
+.todo {
   margin: 1rem; }
 
-.Todo-Input {
+.todo-input {
   margin: 1rem; }
 
 .new-todo {
@@ -14,7 +14,7 @@
 
 .todo-button {
   position: relative;
-  bottom: 4px; }
+  bottom: 2px; }
 
 input[type=text], select {
   padding: 10px 14px;
