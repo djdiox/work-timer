@@ -14,7 +14,7 @@ import '../assets/vendor/input-moment.css'
 
 class App extends Component {
   static propTypes = {
-    startDate: PropTypes.string,
+    startDate: PropTypes.objectOf(moment),
     isStartPickerVisible: PropTypes.bool,
     todos: PropTypes.object,
     firebase: PropTypes.shape({ push: PropTypes.func.isRequired })
@@ -29,29 +29,24 @@ class App extends Component {
     }
     firebase.push('/todos', {
       text: newTodo.value,
-      date: startDate.toISOString(),
+      date: startDate.toDate(),
       done: false
     })
     newTodo.value = ''
   }
 
-  handleChange= () => {
-    console.log(this.props)
+  handleCalendarChange = () => {
+    this.setState({startDate:this.moment});
   }
 
+  toggleCalendar = () => {
+    let {isStartPickerVisible} = this.props;
+    isStartPickerVisible = !isStartPickerVisible;
+  }
       
   render() {
     const { todos } = this.props;
-    let { isStartPickerVisible, startDate} = this.props;
     console.log('todos:', todos);
-    const toggleCalendar = () => {
-      isStartPickerVisible = !isStartPickerVisible;
-    };  
-
-    const handleCalendarChange = () => {
-      startDate = moment(startDate).format('llll')
-    }
-
     const todosList = (!isLoaded(todos))
       ? 'Loading'
       : (isEmpty(todos))
@@ -75,11 +70,11 @@ class App extends Component {
           </Button>
           <h3>Start:</h3>
           <div className="input">
-            <input type="text" value={startDate}
-              onClick={toggleCalendar} readOnly />
+            <input type="text" value={this.props.startDate.toString('llll')}
+              onClick={this.toggleCalendar} readOnly />
           </div>
-          <div className={isStartPickerVisible === true ? '' : 'hidden'} >
-            <InputMoment moment={moment(startDate)} onChange={this.handleChange} minStep={5} />
+          <div className={this.props.isStartPickerVisible === true ? '' : 'hidden'} >
+            <InputMoment moment={this.props.startDate} onSave={this.handleSave} onChange={this.handleCalendarChange} minStep={5} />
           </div>
         </div>
       </div>
@@ -100,6 +95,6 @@ const fbWrappedComponent = firebaseConnect([
 
 export default connect(({ firebase }) => ({
   todos: dataToJS(firebase, 'todos'),
-  startDate:moment().format('llll'),
+  startDate:moment(),
   isStartPickerVisible:true
 }))(fbWrappedComponent);
